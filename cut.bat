@@ -1,0 +1,1 @@
+ffmpeg -i v3.mp4 -vf "crop=265:175:340:190" -c:a copy cut3.mp4

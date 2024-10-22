@@ -1,0 +1,6 @@
+names:
+- robot dog
+nc: 1
+test: D:\tmp\split\datasets\yolov8\test\images
+train: D:\tmp\split\datasets\yolov8\train\images
+val: D:\tmp\split\datasets\yolov8\valid\images
