@@ -1,0 +1,5 @@
+names:
+- robot dog
+nc: 1
+train: C:\Users\sqh83\Desktop\ZJU_IoT_OS_Edge_Computing\datasets\yolov8\train\images
+val: C:\Users\sqh83\Desktop\ZJU_IoT_OS_Edge_Computing\datasets\yolov8\valid\images
