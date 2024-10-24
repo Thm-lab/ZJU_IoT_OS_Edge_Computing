@@ -11,11 +11,11 @@ output_folder = os.path.join(base_folder, 'yolov8')
 
 # 划分训练集、验证集和测试集
 train_ratio = 0.7
-valid_ratio = 0.15
-test_ratio = 0.15
+valid_ratio = 0.3
+
 
 # 创建输出文件夹及其子文件夹
-sets = ['train', 'valid', 'test']
+sets = ['train', 'valid']
 for set_name in sets:
     images_set_path = os.path.join(output_folder, set_name, 'images')
     labels_set_path = os.path.join(output_folder, set_name, 'labels')
@@ -47,15 +47,15 @@ random.shuffle(common_basenames)
 
 train_size = int(len(common_basenames) * train_ratio)
 valid_size = int(len(common_basenames) * valid_ratio)
-# test_size = len(common_basenames) - train_size - valid_size
+
 
 train_basenames = common_basenames[:train_size]
 valid_basenames = common_basenames[train_size:train_size + valid_size]
-test_basenames = common_basenames[train_size + valid_size:]
+
 
 print(f"训练集: {len(train_basenames)}")
 print(f"验证集: {len(valid_basenames)}")
-print(f"测试集: {len(test_basenames)}")
+
 
 
 # 定义一个函数来复制文件
@@ -88,14 +88,11 @@ def copy_files(basenames, set_name):
 # 复制文件到相应的文件夹
 copy_files(train_basenames, 'train')
 copy_files(valid_basenames, 'valid')
-copy_files(test_basenames, 'test')
 
 # 创建 YAML 配置文件
 yaml_content = {
     'train': os.path.abspath(os.path.join(output_folder, 'train', 'images')),
     'val': os.path.abspath(os.path.join(output_folder, 'valid', 'images')),
-    'test': os.path.abspath(os.path.join(output_folder, 'test',
-                                         'images')),  # 可选
     'nc': 1,  # 根据您的数据集类别数量进行修改
     'names': ['robot dog'],  # 根据您的类别名称进行修改
 }
